@@ -2,8 +2,7 @@
 import React, { useState } from 'react'
 import { initialBoard } from '../lib/gameLogic';
 
-export default function Board() {
-    const [board, setBoard] = useState(initialBoard);
+export default function Board({board}) {
 
     return (
         <div className='h-full w-full bg-gray-800 rounded-t-4xl pt-2 px-2'>
