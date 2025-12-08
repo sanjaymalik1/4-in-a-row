@@ -53,10 +53,10 @@ export default function page() {
           <Board board={board} />
         </div>
         {
-          !isDraw && !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} />
+          !isDraw && !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} setAlert={setAlert}/>
         }
         {
-          !isDraw && !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} />
+          !isDraw && !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} setAlert={setAlert}/>
         }
       </div>
     </div>

@@ -1,7 +1,16 @@
 import React, { useState } from 'react'
 
-export default function CurrentPlayerDisplay({ player, color, handleChance, alert}) {
+export default function CurrentPlayerDisplay({ player, color, handleChance, alert, setAlert}) {
     const [inputValue, setInputValue] = useState("")
+
+    function handleSubmit() {
+        const colNo = parseInt(inputValue) - 1;
+        if (!isNaN(colNo) && colNo >= 0 && colNo < 7) {
+            handleChance(colNo);
+        }
+        setInputValue("");
+    }
+
     return (
         <div className={`absolute top-18 right-6 w-sm flex flex-col items-center border border-gray-500 rounded-2xl py-8 pb-22`}>
             <h2 style={{ color: color }} className='text-2xl tracking-wide'>Player {player}'s Chance</h2>
@@ -13,7 +22,8 @@ export default function CurrentPlayerDisplay({ player, color, handleChance, aler
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)} />
 
-                <button className="ml-2 px-4 py-2 bg-white text-black rounded hover:bg-gray-300 cursor-pointer">
+                <button className="ml-2 px-4 py-2 bg-white text-black rounded hover:bg-gray-300 cursor-pointer"
+                    onClick={handleSubmit}>
                     Enter
                 </button>
             </div>
