@@ -1,0 +1,1 @@
+export const initialBoard = Array.from({ length: 6 }, () => Array(7).fill(null));
