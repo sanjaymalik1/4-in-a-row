@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function CurrentPlayerDisplay({ player, color }) {
+export default function CurrentPlayerDisplay({ player, color, handleChance}) {
     const [inputValue, setInputValue] = useState("")
     return (
         <div className={`absolute top-18 ${player === "A" ? "left-6" : "right-6"} w-sm flex flex-col items-center border border-gray-500 rounded-2xl py-8 pb-22`}>
@@ -20,7 +20,8 @@ export default function CurrentPlayerDisplay({ player, color }) {
             <span className='mt-6 text-gray-400'>or choose column no. from</span>
             <div className="flex gap-3 mt-6">
                 {[1, 2, 3, 4, 5, 6, 7].map((num) => (
-                    <div key={num} className="w-8 h-8 rounded-full border border-white flex items-center justify-center cursor-pointer hover:bg-white hover:text-black">
+                    <div key={num} className="w-8 h-8 rounded-full border border-white flex items-center justify-center cursor-pointer hover:bg-white hover:text-black"
+                    onClick={()=> handleChance(num-1)}>
                         {num}
                     </div>
                 ))}

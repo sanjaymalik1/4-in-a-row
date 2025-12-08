@@ -1,13 +1,13 @@
 export const initialBoard = Array.from({ length: 6 }, () => Array(7).fill(null));
 
 
-export function placeToken(colNo){
-    
-    const newBoard = Board.map(row => [...row])
+export function placeToken(colNo,board,currentPlayer){
 
-    for(let r = 5; r<=0 ; r--){
-        if(newBoard[row][colNo] === null){
-            newBoard[row][colNo] = currentPlayer;
+    const newBoard = board.map(row => [...row])
+
+    for(let r = 5; r>=0 ; r--){
+        if(newBoard[r][colNo] === null){
+            newBoard[r][colNo] = currentPlayer;
             return {newBoard,success : true};
         }
     }
