@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Board from "./components/Board";
 import CurrentPlayerDisplay from "./components/CurrentPlayerDisplay";
 import { checkDraw, checkWinner, initialBoard, placeToken } from "./lib/gameLogic";
@@ -11,6 +11,37 @@ export default function page() {
   const [board, setBoard] = useState(initialBoard)
   const [alert, setAlert] = useState("")
   const [isDraw, setIsDraw] = useState(false);
+
+  useEffect(()=>{
+    localStorage.setItem("board",JSON.stringify(board))
+    localStorage.setItem("currentPlayer",JSON.stringify(currentPlayer))
+    localStorage.setItem("winner",JSON.stringify(winner))
+    localStorage.setItem("isDraw",isDraw)
+
+  },[board,currentPlayer,winner,isDraw])
+
+
+  useEffect(()=>{
+    const savedBoard = JSON.parse(localStorage.getItem("board"))
+    const savedPlayer = JSON.parse(localStorage.getItem("currentPlayer"))
+    const savedWinner = JSON.parse(localStorage.getItem("winner"))
+    const savedIsDraw = JSON.parse(localStorage.getItem("isDraw"))
+
+    if(savedBoard){
+      setBoard(savedBoard)
+    }
+    if(savedPlayer){
+      setCurrentPlayer(savedPlayer)
+    }
+    if(savedWinner){
+      setWinner(savedWinner)
+    }
+    if(savedIsDraw){
+      setIsDraw(savedIsDraw)
+    }
+    
+  },[])
+
 
   function handleChance(colNo) {
     setAlert("")
