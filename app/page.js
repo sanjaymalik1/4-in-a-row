@@ -3,17 +3,18 @@
 import { useState } from "react";
 import Board from "./components/Board";
 import CurrentPlayerDisplay from "./components/CurrentPlayerDisplay";
-import { checkWinner, initialBoard, placeToken } from "./lib/gameLogic";
+import { checkDraw, checkWinner, initialBoard, placeToken } from "./lib/gameLogic";
 
 export default function page() {
   const [currentPlayer, setCurrentPlayer] = useState("A");
   const [winner, setWinner] = useState(null);
   const [board, setBoard] = useState(initialBoard)
   const [alert, setAlert] = useState("")
+  const [isDraw, setIsDraw] = useState(false);
 
   function handleChance(colNo) {
     setAlert("")
-    if (winner) return;
+    if (winner || isDraw) return;
 
     const { newBoard, success } = placeToken(colNo, board, currentPlayer);
 
@@ -29,6 +30,11 @@ export default function page() {
       return;
     }
 
+    if(checkDraw(newBoard)){
+      setIsDraw(true)
+      return;
+    }
+
     setCurrentPlayer(currentPlayer === "A" ? "B" : "A");
   }
 
@@ -38,16 +44,19 @@ export default function page() {
       {
         winner && <h2 className="text-2xl font-bold tracking-wide mt-12">Player {winner} wins!</h2>
       }
+      {
+        isDraw && <h2 className="text-2xl font-bold tracking-wide mt-12">Match Drawn!</h2>
+      }
       <div className="flex-1 mt-6 w-full flex justify-center relative">
 
         <div className="w-144 h-122 self-end">
           <Board board={board} />
         </div>
         {
-          !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} />
+          !isDraw && !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} />
         }
         {
-          !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} />
+          !isDraw && !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} />
         }
       </div>
     </div>

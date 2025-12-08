@@ -50,3 +50,11 @@ export function checkWinner(board){
     }
     return false;
 }
+
+
+export function checkDraw(board){
+    for(let c = 0 ; c<7 ; c++){
+        if(board[0][c] === null) return false;
+    }
+    return true;
+}
