@@ -10,8 +10,7 @@ export default function Board({board}) {
                 {board.map((row, rowId) =>
                     row.map((cell, cellId) => (
                         <div key={`${rowId}-${cellId}`} className='w-20 h-20 flex items-center justify-center'>
-                            <div className='bg-gray-950 w-18 h-18 border rounded-full'>
-                            {cell}
+                            <div className={`${cell === "A" && "bg-red-700"} ${cell=== "B" &&  "bg-yellow-500"} bg-gray-950 w-18 h-18 border rounded-full`}>
                         </div>
                         </div>
                     ))
