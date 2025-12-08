@@ -20,7 +20,12 @@ export default function CurrentPlayerDisplay({ player, color, handleChance, aler
                     placeholder='Enter column no. (1-7)'
                     className='w-48 p-2 mt-12 rounded border border-white'
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)} />
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={(e) =>{
+                        if(e.key === "Enter"){
+                            handleSubmit();
+                        }
+                    }} />
 
                 <button className="ml-2 px-4 py-2 bg-white text-black rounded hover:bg-gray-300 cursor-pointer"
                     onClick={handleSubmit}>

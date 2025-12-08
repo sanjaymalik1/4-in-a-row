@@ -12,35 +12,37 @@ export default function page() {
   const [alert, setAlert] = useState("")
   const [isDraw, setIsDraw] = useState(false);
 
-  useEffect(()=>{
-    localStorage.setItem("board",JSON.stringify(board))
-    localStorage.setItem("currentPlayer",JSON.stringify(currentPlayer))
-    localStorage.setItem("winner",JSON.stringify(winner))
-    localStorage.setItem("isDraw",isDraw)
 
-  },[board,currentPlayer,winner,isDraw])
-
-
-  useEffect(()=>{
+  useEffect(() => {
     const savedBoard = JSON.parse(localStorage.getItem("board"))
-    const savedPlayer = JSON.parse(localStorage.getItem("currentPlayer"))
-    const savedWinner = JSON.parse(localStorage.getItem("winner"))
-    const savedIsDraw = JSON.parse(localStorage.getItem("isDraw"))
+    const savedPlayer = localStorage.getItem("currentPlayer")
+    const savedWinner = localStorage.getItem("winner")
+    const savedIsDraw = JSON.stringify(localStorage.getItem("isDraw"))
 
-    if(savedBoard){
+    if (savedBoard) {
       setBoard(savedBoard)
     }
-    if(savedPlayer){
+    if (savedPlayer) {
       setCurrentPlayer(savedPlayer)
     }
-    if(savedWinner){
+    if (savedWinner === "A" || savedWinner === "B") {
       setWinner(savedWinner)
     }
-    if(savedIsDraw){
-      setIsDraw(savedIsDraw)
+    if (savedIsDraw === true) {
+      setIsDraw(true);
     }
-    
-  },[])
+
+  }, [])
+
+
+  useEffect(() => {
+    localStorage.setItem("board", JSON.stringify(board))
+    localStorage.setItem("currentPlayer", currentPlayer)
+    localStorage.setItem("winner", winner)
+    localStorage.setItem("isDraw",JSON.stringify(isDraw))
+
+  }, [board, currentPlayer, winner,isDraw])
+
 
 
   function handleChance(colNo) {
