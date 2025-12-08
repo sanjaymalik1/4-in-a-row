@@ -30,12 +30,20 @@ export default function page() {
       return;
     }
 
-    if(checkDraw(newBoard)){
+    if (checkDraw(newBoard)) {
       setIsDraw(true)
       return;
     }
 
     setCurrentPlayer(currentPlayer === "A" ? "B" : "A");
+  }
+
+  function restartGame() {
+    setBoard(initialBoard);
+    setCurrentPlayer("A");
+    setWinner(null);
+    setIsDraw(false);
+    setAlert("");
   }
 
   return (
@@ -53,11 +61,17 @@ export default function page() {
           <Board board={board} />
         </div>
         {
-          !isDraw && !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} setAlert={setAlert}/>
+          !isDraw && !winner && currentPlayer === "A" && <CurrentPlayerDisplay player={"A"} color={"red"} handleChance={handleChance} alert={alert} setAlert={setAlert} />
         }
         {
-          !isDraw && !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} setAlert={setAlert}/>
+          !isDraw && !winner && currentPlayer === "B" && <CurrentPlayerDisplay player={"B"} color={"yellow"} handleChance={handleChance} alert={alert} setAlert={setAlert} />
         }
+        <button
+          onClick={restartGame}
+          className="absolute bottom-12 left-8 bg-gray-200 text-red-700 font-bold px-4 py-2 rounded cursor-pointer hover:bg-gray-400">
+          Restart Game
+        </button>
+
       </div>
     </div>
   )
