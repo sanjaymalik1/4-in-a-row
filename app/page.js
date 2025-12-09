@@ -81,7 +81,7 @@ export default function page() {
   }
 
   return (
-    <div className='h-screen w-screen bg-gray-950 text-white flex flex-col items-center'>
+    <div className='min-h-screen w-screen bg-gray-950 text-white flex flex-col items-center'>
       <h1 className=" mt-6 text-3xl sm:mt-10 sm:text-5xl font-bold tracking-wider">4 In A Row</h1>
       {
         winner && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Player {winner} wins!</h2>
@@ -110,7 +110,7 @@ export default function page() {
           
       </div>
       <button onClick={restartGame}
-          className="block sm:hidden absolute top-8 left-4 text-red-700 bg-gray-200 p-2 rounded-md cursor-pointer">
+          className="block sm:hidden absolute top-6 left-4 text-red-700 bg-gray-200 p-2 rounded-md cursor-pointer">
             <RotateCcw />
         </button>
     </div>
