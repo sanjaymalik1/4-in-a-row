@@ -81,17 +81,17 @@ export default function page() {
   }
 
   return (
-    <div className='h-dvh sm:min-h-screen w-screen bg-gray-950 text-white flex flex-col items-center overflow-hidden'>
-      <h1 className=" mt-6 text-3xl sm:mt-10 sm:text-5xl font-bold tracking-wider">4 In A Row</h1>
+    <div className='h-dvh md:min-h-screen 2xl:min-h-screen w-screen bg-gray-950 text-white flex flex-col items-center overflow-hidden'>
+      <h1 className=" mt-6 text-3xl md:mt-8 md:text-4xl 2xl:mt-10 2xl:text-5xl font-bold tracking-wider">4 In A Row</h1>
       {
-        winner && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Player {winner} wins!</h2>
+        winner && <h2 className="text-xl md:text-xl 2xl:text-2xl font-bold tracking-wide md:mt-10 2xl:mt-12 mt-8">Player {winner} wins!</h2>
       }
       {
-        isDraw && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Match Drawn!</h2>
+        isDraw && <h2 className="text-xl md:text-xl 2xl:text-2xl font-bold tracking-wide md:mt-10 2xl:mt-12 mt-8">Match Drawn!</h2>
       }
       <div className="flex-1 mt-6 w-full flex justify-center relative">
 
-        <div className="sm:w-144 sm:h-122 w-72 h-61 self-end mb-2 sm:mb-0">
+        <div className="md:w-96 md:h-80 2xl:w-144 2xl:h-122 w-72 h-61 self-end mb-2 md:mb-4 2xl:mb-0">
           <Board board={board} />
         </div>
         {
@@ -102,7 +102,7 @@ export default function page() {
         }
         <button
           onClick={restartGame}
-          className="hidden sm:block absolute bottom-12 left-8 bg-gray-200 text-red-700 font-bold px-4 py-2 rounded cursor-pointer hover:bg-gray-400">
+          className="hidden md:hidden 2xl:block absolute bottom-12 left-8 bg-gray-200 text-red-700 font-bold px-4 py-2 rounded cursor-pointer hover:bg-gray-400">
           Restart Game
         </button>
 
@@ -110,7 +110,7 @@ export default function page() {
           
       </div>
       <button onClick={restartGame}
-          className="block sm:hidden absolute top-6 left-4 text-red-700 bg-gray-200 p-2 rounded-md cursor-pointer">
+          className="block md:block 2xl:hidden absolute top-6 left-4 text-red-700 bg-gray-200 p-2 rounded-md cursor-pointer">
             <RotateCcw />
         </button>
     </div>
