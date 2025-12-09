@@ -12,7 +12,7 @@ export default function CurrentPlayerDisplay({ player, color, handleChance, aler
     }
 
     return (
-        <div className={`absolute sm:top-18 sm:right-6 sm:w-sm flex flex-col items-center border border-gray-500 sm:rounded-2xl sm:py-8 sm:pb-22  w-68 py-4 pb-12 -top-16 rounded-xl`}>
+        <div className={`absolute sm:top-18 sm:right-6 sm:w-sm flex flex-col items-center border border-gray-500 sm:rounded-2xl sm:py-8 sm:pb-22  w-68 py-4 pb-12 top-16 rounded-xl`}>
             <h2 style={{ color: color }} className='text-lg sm:text-2xl tracking-wide'>Player {player}'s Chance</h2>
 
             <div className='hidden sm:flex sm:items-center'>

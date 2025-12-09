@@ -81,7 +81,7 @@ export default function page() {
   }
 
   return (
-    <div className='min-h-screen w-screen bg-gray-950 text-white flex flex-col items-center'>
+    <div className='h-dvh sm:min-h-screen w-screen bg-gray-950 text-white flex flex-col items-center overflow-hidden'>
       <h1 className=" mt-6 text-3xl sm:mt-10 sm:text-5xl font-bold tracking-wider">4 In A Row</h1>
       {
         winner && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Player {winner} wins!</h2>
@@ -91,7 +91,7 @@ export default function page() {
       }
       <div className="flex-1 mt-6 w-full flex justify-center relative">
 
-        <div className="sm:w-144 sm:h-122 w-72 h-61 self-end">
+        <div className="sm:w-144 sm:h-122 w-72 h-61 self-end mb-2 sm:mb-0">
           <Board board={board} />
         </div>
         {
