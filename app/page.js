@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Board from "./components/Board";
 import CurrentPlayerDisplay from "./components/CurrentPlayerDisplay";
 import { checkDraw, checkWinner, initialBoard, placeToken } from "./lib/gameLogic";
+import { RotateCcw } from 'lucide-react';
 
 export default function page() {
   const [currentPlayer, setCurrentPlayer] = useState("A");
@@ -81,16 +82,16 @@ export default function page() {
 
   return (
     <div className='h-screen w-screen bg-gray-950 text-white flex flex-col items-center'>
-      <h1 className="mt-10 text-5xl font-bold tracking-wider">4 In A Row</h1>
+      <h1 className=" mt:6 text-2xl sm:mt-10 sm:text-5xl font-bold tracking-wider">4 In A Row</h1>
       {
-        winner && <h2 className="text-2xl font-bold tracking-wide mt-12">Player {winner} wins!</h2>
+        winner && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Player {winner} wins!</h2>
       }
       {
-        isDraw && <h2 className="text-2xl font-bold tracking-wide mt-12">Match Drawn!</h2>
+        isDraw && <h2 className="text-xl sm:text-2xl font-bold tracking-wide sm:mt-12 mt-8">Match Drawn!</h2>
       }
       <div className="flex-1 mt-6 w-full flex justify-center relative">
 
-        <div className="w-144 h-122 self-end">
+        <div className="sm:w-144 sm:h-122 w-72 h-61 self-end">
           <Board board={board} />
         </div>
         {
@@ -101,10 +102,15 @@ export default function page() {
         }
         <button
           onClick={restartGame}
-          className="absolute bottom-12 left-8 bg-gray-200 text-red-700 font-bold px-4 py-2 rounded cursor-pointer hover:bg-gray-400">
+          className="hidden sm:block absolute bottom-12 left-8 bg-gray-200 text-red-700 font-bold px-4 py-2 rounded cursor-pointer hover:bg-gray-400">
           Restart Game
         </button>
 
+        <button onClick={restartGame}
+          className="block sm:hidden absolute bottom-10 left-4 text-red-700 bg-gray-200 p-2 rounded-md cursor-pointer">
+            <RotateCcw />
+        </button>
+          
       </div>
     </div>
   )
